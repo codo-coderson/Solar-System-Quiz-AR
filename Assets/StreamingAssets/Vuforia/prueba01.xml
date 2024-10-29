@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="abonotransportesmadrid" size="10.000000 6.054750" />
+    <ImageTarget name="lenovotablet2" size="10.000000 1.225586" />
+    <ImageTarget name="lenovotablet" size="10.000000 5.312500" />
+    <ImageTarget name="kidding" size="12.000000 17.858490" />
+    <ImageTarget name="mousepad" size="25.000000 20.615118" />
+  </Tracking>
+</QCARConfig>
