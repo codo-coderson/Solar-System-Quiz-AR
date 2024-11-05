@@ -562,7 +562,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1935821274}
   - component: {fileID: 1935821273}
-  - component: {fileID: 1935821272}
   m_Layer: 0
   m_Name: Cloud Recognition
   m_TagString: Untagged
@@ -570,19 +569,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1935821272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935821271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98d11699052494443a991ddec1c6e728, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ImageTargetTemplate: {fileID: 1382831640}
 --- !u!114 &1935821273
 MonoBehaviour:
   m_ObjectHideFlags: 0

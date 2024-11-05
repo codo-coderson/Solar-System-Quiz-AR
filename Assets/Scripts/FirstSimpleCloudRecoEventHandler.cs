@@ -5,7 +5,7 @@ using Vuforia;
 using static UnityEngine.CullingGroup;
 using static Vuforia.CloudRecoBehaviour;
 
-public class SimpleCloudRecoEventHandler : MonoBehaviour
+public class FirstSimpleCloudRecoEventHandler : MonoBehaviour
 {
     CloudRecoBehaviour mCloudRecoBehaviour;
     bool mIsScanning = false;
