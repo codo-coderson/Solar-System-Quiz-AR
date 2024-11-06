@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CloudRecognition.unity
     guid: 0b1e59e77b3c1924ab4c0a878686e0bc
+  - enabled: 0
+    path: Assets/Scenes/P2-JuegoPlanetas.unity
+    guid: 0b0f5f0b0b993ff44b5180443d9a44ec
+  - enabled: 1
+    path: Assets/Scenes/P3-CloudJuegoPlanetas.unity
+    guid: 876c11e46a6550d42a01a7a716da1127
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: a39c30c381d738b488bfdf3ec1ba9ecf, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 527bc07d6987539449931914f495670c, type: 2}

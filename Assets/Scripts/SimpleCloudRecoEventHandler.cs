@@ -1,8 +1,5 @@
 using UnityEngine;
 using Vuforia;
-using TMPro;
-using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class SimpleCloudRecoEventHandler : MonoBehaviour
 {
@@ -10,59 +7,7 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
     bool mIsScanning = false;
     string mTargetMetadata = "";
 
-    [SerializeField] TextMeshProUGUI displayText;
-
     public ImageTargetBehaviour ImageTargetTemplate;
-
-
-
-
-
-
-    void Start()
-    {
-        GeneraYPideUnPlaneta();
-    }
-
-    public void GeneraYPideUnPlaneta()
-    {
-        string[] planets = { "Mercurio", "Tierra"};
-        // wait for 2 seconds before showing planet name
-        StartCoroutine(ShowPlanetName(planets));
-
-    }
-
-    public void detectaImagen(string targetID)
-    {
-        if (targetID == displayText.text)
-        {
-            displayText.text = "Correcto";
-        }
-        else
-        {
-            displayText.text = "Incorrecto";
-        }
-        StartCoroutine(RestartScene());
-
-    }
-
-    IEnumerator ShowPlanetName(string[] planets)
-    {
-        yield return new WaitForSeconds(2);
-        displayText.text = planets[Random.Range(0, planets.Length)];
-    }
-
-    IEnumerator RestartScene()
-    {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-
-
-
-
-
 
     // Register cloud reco callbacks
     void Awake()
@@ -83,7 +28,6 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
         mCloudRecoBehaviour.UnregisterOnStateChangedEventHandler(OnStateChanged);
         mCloudRecoBehaviour.UnregisterOnNewSearchResultEventHandler(OnNewSearchResult);
     }
-
     public void OnInitialized(CloudRecoBehaviour cloudRecoBehaviour)
     {
         Debug.Log("Cloud Reco initialized");
@@ -99,7 +43,6 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
         Debug.Log("Cloud Reco update error " + updateError.ToString());
 
     }
-
     public void OnStateChanged(bool scanning)
     {
         mIsScanning = scanning;
@@ -109,7 +52,6 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
             // Clear all known targets
         }
     }
-
     // Here we handle a cloud target recognition event
     public void OnNewSearchResult(CloudRecoBehaviour.CloudRecoSearchResult cloudRecoSearchResult)
     {
@@ -118,6 +60,12 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
 
         // Stop the scanning by disabling the behaviour
         mCloudRecoBehaviour.enabled = false;
+        // Build augmentation based on target 
+        if (ImageTargetTemplate)
+        {
+            /* Enable the new result with the same ImageTargetBehaviour: */
+            mCloudRecoBehaviour.EnableObservers(cloudRecoSearchResult, ImageTargetTemplate.gameObject);
+        }
     }
 
     void OnGUI()
