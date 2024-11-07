@@ -5,7 +5,7 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
 {
     CloudRecoBehaviour mCloudRecoBehaviour;
     bool mIsScanning = false;
-    string mTargetMetadata = "";
+    public static string mTargetMetadata = "";
 
     public ImageTargetBehaviour ImageTargetTemplate;
 

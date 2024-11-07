@@ -2,5 +2,4 @@
     "link": "https://drive.google.com/uc?export=download&id=1Vp-Q-cy6FRg7WXkNTnY2tC9V1fQ-Pd",
     "name": "Tierra",
     "text": "La Tierra se formó hace aproximadamente 4550 millones de años y la vida surgió unos mil millones de años después. Es el hogar de millones de especies, incluidos los seres humanos y actualmente el único cuerpo astronómico donde se conoce la existencia de vida.",
-    "puntuacion": 10
 }
