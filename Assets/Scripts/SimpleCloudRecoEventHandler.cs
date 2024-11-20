@@ -4,7 +4,9 @@ using System.Collections;
 using System.IO;
 using UnityEngine.Networking;
 
-
+// TO-DO
+// La lista de planetas se especifica en un JSON que se carga al inicio de la aplicación
+// Ahora añade los otros planetas, pero recuerda que el enlace para cada planeta se va a sacar de sus metadatos, que están asociados a cada imagetarget
 public class SimpleCloudRecoEventHandler : MonoBehaviour
 {
     CloudRecoBehaviour mCloudRecoBehaviour;
