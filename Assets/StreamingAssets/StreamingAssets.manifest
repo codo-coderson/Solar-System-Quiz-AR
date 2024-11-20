@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 238190921
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ardebugmenu
+      Dependencies: {}
+    Info_1:
+      Name: earthbundle
+      Dependencies: {}

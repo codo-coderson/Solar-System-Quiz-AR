@@ -1,5 +1,9 @@
 using UnityEngine;
 using Vuforia;
+using System.Collections;
+using System.IO;
+using UnityEngine.Networking;
+
 
 public class SimpleCloudRecoEventHandler : MonoBehaviour
 {
@@ -65,6 +69,34 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
         {
             /* Enable the new result with the same ImageTargetBehaviour: */
             mCloudRecoBehaviour.EnableObservers(cloudRecoSearchResult, ImageTargetTemplate.gameObject);
+
+            StartCoroutine(GetAssetBundle());
+        }
+    }
+
+    IEnumerator GetAssetBundle()
+    {
+        UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle("https://drive.google.com/uc?export=download&id=1JD6jhAPetCJOchgxQwYshuWXWE-V6B2a");
+        yield return www.SendWebRequest();
+
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
+            string[] allAssetNames = bundle.GetAllAssetNames();
+                
+            for(int i = 0; i < allAssetNames.Length; i++)
+            {
+                print(allAssetNames[i]);
+            }
+
+            string gameObjectName = Path.GetFileNameWithoutExtension(allAssetNames[0]).ToString();
+            GameObject objectFound = bundle.LoadAsset(gameObjectName) as GameObject;
+            GameObject obj = Instantiate(objectFound, ImageTargetTemplate.transform.position, ImageTargetTemplate.transform.rotation);
+            obj.transform.parent = ImageTargetTemplate.transform;
         }
     }
 
