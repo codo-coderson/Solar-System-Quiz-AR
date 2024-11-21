@@ -4,14 +4,32 @@ using System.Collections;
 using System.IO;
 using UnityEngine.Networking;
 
+
+public class PlanetInfo
+{
+    public string link;
+    public string name;
+    public string text;
+
+    // TODO cambiale el nombre a PlayerInfo
+    public static PlanetInfo CreateFromJSON(string jsonString)
+    {
+        return JsonUtility.FromJson<PlanetInfo>(jsonString);
+    }
+
+}
+
+
 // TO-DO
 // La lista de planetas se especifica en un JSON que se carga al inicio de la aplicación
-// Ahora añade los otros planetas, pero recuerda que el enlace para cada planeta se va a sacar de sus metadatos, que están asociados a cada imagetarget
 public class SimpleCloudRecoEventHandler : MonoBehaviour
 {
     CloudRecoBehaviour mCloudRecoBehaviour;
     bool mIsScanning = false;
     public static string mTargetMetadata = "";
+    PlanetInfo planet;
+
+
 
     public ImageTargetBehaviour ImageTargetTemplate;
 
@@ -63,6 +81,7 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
     {
         // Store the target metadata
         mTargetMetadata = cloudRecoSearchResult.MetaData;
+        planet = PlanetInfo.CreateFromJSON(mTargetMetadata);
 
         // Stop the scanning by disabling the behaviour
         mCloudRecoBehaviour.enabled = false;
@@ -78,7 +97,9 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
 
     IEnumerator GetAssetBundle()
     {
-        UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle("https://drive.google.com/uc?export=download&id=1JD6jhAPetCJOchgxQwYshuWXWE-V6B2a");
+        // UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle("https://drive.google.com/uc?export=download&id=1JD6jhAPetCJOchgxQwYshuWXWE-V6B2a");
+        // No queremos coger el asset bundle de un link de google drive, queremos cogerlo de los metadatos de la imagetarget en el servidor de vuforia -->
+        UnityWebRequest www = UnityWebRequestAssetBundle.GetAssetBundle(planet.link);
         yield return www.SendWebRequest();
 
         if (www.result != UnityWebRequest.Result.Success)
