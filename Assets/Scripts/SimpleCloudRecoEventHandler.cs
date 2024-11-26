@@ -20,8 +20,12 @@ public class PlanetInfo
 }
 
 
-// TO-DO
-// La lista de planetas se especifica en un JSON que se carga al inicio de la aplicación
+// Mecánica del juego 
+// La lista de planetas a adivinar se especifica en un JSON que se carga al inicio de la aplicación y se parseará como un array de texto
+// En la esquina superior izquierda habrá en todo momento un contador de planetas adivinados
+// El texto "Encuentra el siguiente planeta: " + un planeta generado aleatoriamente se muestra en la parte superior de la pantalla
+// Cada planeta adivinado sumará un punto al contador de planetas adivinados
+// Si se falla, se mostrará un mensaje de "Error: el planeta era [nombre_del_planeta]", se mostrará la puntuación de esa partida y un botón táctil para empezar de nuevo
 public class SimpleCloudRecoEventHandler : MonoBehaviour
 {
     CloudRecoBehaviour mCloudRecoBehaviour;
@@ -115,10 +119,13 @@ public class SimpleCloudRecoEventHandler : MonoBehaviour
             {
                 print(allAssetNames[i]);
             }
-
+            // Se obtiene el nombre del objeto que se ha encontrado en el AssetBundle
             string gameObjectName = Path.GetFileNameWithoutExtension(allAssetNames[0]).ToString();
+            // Se carga el objeto que se ha encontrado en el AssetBundle
             GameObject objectFound = bundle.LoadAsset(gameObjectName) as GameObject;
+            // Se instancia el objeto que se ha encontrado en la posición y rotación del ImageTargetTemplate
             GameObject obj = Instantiate(objectFound, ImageTargetTemplate.transform.position, ImageTargetTemplate.transform.rotation);
+            // Se establece como padre del objeto encontrado el ImageTargetTemplate
             obj.transform.parent = ImageTargetTemplate.transform;
         }
     }

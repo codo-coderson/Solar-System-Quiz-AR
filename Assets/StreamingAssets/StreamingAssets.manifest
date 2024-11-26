@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 238190921
+CRC: 1723456841
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -7,4 +7,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_1:
       Name: earthbundle
+      Dependencies: {}
+    Info_2:
+      Name: jupiterbundle
       Dependencies: {}
